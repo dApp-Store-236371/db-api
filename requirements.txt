@@ -1,3 +1,4 @@
 urllib3==1.26.9
 flask
 psycopg2
+gunicorn
