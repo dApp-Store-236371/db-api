@@ -5,6 +5,8 @@ import json
 from threading import Thread
 import psycopg2
 from urllib.parse import urlparse
+from asgiref.wsgi import WsgiToAsgi
+
 
 IS_HOSTED = True
 
@@ -71,8 +73,8 @@ def get_filtered_app_ids(db_connection, offset, length, textFilter, categoryFilt
 # ###### SERVER ###############
 # statics_dir = os.path.abspath('mysite/build') if IS_HOSTED else os.path.abspath('./build')
 
-app = Flask(__name__)
-
+app_wsgi = Flask(__name__)
+app = WsgiToAsgi(app_wsgi)
 # @app.route('/', defaults={'path': ''})
 # @app.route('/<path:path>')
 # def serve(path):
