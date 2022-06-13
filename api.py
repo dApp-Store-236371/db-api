@@ -74,7 +74,7 @@ def get_filtered_app_ids(db_connection, offset, length, textFilter, categoryFilt
 # statics_dir = os.path.abspath('mysite/build') if IS_HOSTED else os.path.abspath('./build')
 
 app = Flask(__name__)
-asgi_app = WsgiToAsgi(app_wsgi)
+asgi_app = WsgiToAsgi(app)
 # @app.route('/', defaults={'path': ''})
 # @app.route('/<path:path>')
 # def serve(path):
