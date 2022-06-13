@@ -71,7 +71,7 @@ def get_filtered_app_ids(db_connection, offset, length, textFilter, categoryFilt
 # ###### SERVER ###############
 # statics_dir = os.path.abspath('mysite/build') if IS_HOSTED else os.path.abspath('./build')
 
-app = Flask(__name__, static_folder=statics_dir)
+app = Flask(__name__)
 
 # @app.route('/', defaults={'path': ''})
 # @app.route('/<path:path>')
