@@ -1,6 +1,6 @@
 from http import HTTPStatus
 import os
-from flask import Flask, Response, send_from_directory
+from flask import Flask, Response, jsonify, send_from_directory
 import json
 from threading import Thread
 import psycopg2
