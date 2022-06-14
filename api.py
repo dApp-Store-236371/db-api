@@ -107,8 +107,16 @@ def get_apps_filtered(offset, length, text_filter, rating_filter, category_filte
     print("category_filter = ", category_filter)
     
     ids = []
-    with get_db_connection() as conn:
-        ids = get_filtered_app_ids(conn, offset, length, text_filter, category_filter, rating_filter)
+    conn = None
+    try:
+        conn = get_db_connection()
+        with conn:
+            ids = get_filtered_app_ids(conn, offset, length, text_filter, category_filter, rating_filter)
+    except Exception as e:
+        pass
+    finally:
+        if conn:
+            conn.close()
         
     response = jsonify(ids)
     response.headers.add('Access-Control-Allow-Origin', '*')
