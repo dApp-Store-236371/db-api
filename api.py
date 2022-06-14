@@ -110,10 +110,9 @@ def get_apps_filtered(offset, length, text_filter, rating_filter, category_filte
     with get_db_connection() as conn:
         ids = get_filtered_app_ids(conn, offset, length, text_filter, category_filter, rating_filter)
         
-    
-    
-    return Response(status=HTTPStatus.OK, response=json.dumps(ids),  mimetype='application/json')
-
+    response = jsonify(ids)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 # if __name__ == "__main__":
